@@ -1,0 +1,54 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 mx-auto">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Home</mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="text-center">
+            <div *ngIf="globalDataService.userDetails.id == ''">
+              <a [routerLink]="'/login'" href="'/login" class="menu-items">
+                <button mat-raised-button color="primary">
+                  Login
+                </button>
+              </a>
+              <a [routerLink]="'/register'" href="'/register" class="menu-items">
+                <button mat-raised-button color="primary">
+                  Register
+                </button>
+              </a>
+            </div>
+            <div *ngIf="globalDataService.userDetails.id != ''">
+              <a [routerLink]="'/users'" href="'/users" class="menu-items mr-3" *ngIf="globalDataService.userDetails.isAdmin == true">
+                <button mat-raised-button color="primary" class="mb-2">
+                  Users
+                </button>
+              </a>
+              <a [routerLink]="'/genre'" href="'/genre" class="menu-items mr-3">
+                <button mat-raised-button color="primary" class="mb-2">
+                  Genre
+                </button>
+              </a>
+              <a [routerLink]="'/movies'" href="'/movies" class="menu-items mr-3">
+                <button mat-raised-button color="primary" class="mb-2">
+                  Movies
+                </button>
+              </a>
+              <a [routerLink]="'/customers'" href="'/customers" class="menu-items mr-3" *ngIf="globalDataService.userDetails.isAdmin == true">
+                <button mat-raised-button color="primary" class="mb-2">
+                  Customers
+                </button>
+              </a>
+              <a [routerLink]="'/rentals'" href="'/rentals" class="menu-items">
+                <button mat-raised-button color="primary" class="mb-2">
+                  Rental
+                </button>
+              </a>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div><!-- .col -->
+    </div><!-- .row -->
+  </div><!-- .container -->
+</section>

@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.cursor-pointer {
+  cursor: pointer;
+}
+.disabled {
+  opacity: 0.5!important;
+  pointer-events: none;
+  cursor: not-allowed
+}
+
+.mat-icon-button.icon-btn-16,
+.mat-icon-button.icon-btn-16 .mat-icon {
+  height: 16px;
+  width: 16px;
+  line-height: 16px;
+  font-size: 16px;
+  vertical-align: text-top;
+}
+.menu-items {
+  color: #fff!important;
+  text-decoration: none!important;
+}
+.menu-items:hover {
+  color: #fff!important;
+}

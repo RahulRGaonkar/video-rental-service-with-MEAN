@@ -1,0 +1,37 @@
+<!-- Toolbar -->
+<div class="toolbar justify-content-between" role="banner">
+
+  <div class="d-flex">
+    <ng-container *ngIf="isUserLoggedIn()"><!-- menu for logged in users -->
+      <ng-container *ngFor="let menuItem of userMenu; let last = last">
+        <ng-container *ngIf="(globalDataService.userDetails.isAdmin || (!globalDataService.userDetails.isAdmin && !menuItem.isAdmin) && !last)">
+          <a [routerLink]="menuItem.link" href="{{menuItem.link}}" class="menu-items" *ngIf="menuItem.link != null">
+            <span>{{menuItem.name}}</span>
+          </a>
+          <div class="item-spacer"></div>
+        </ng-container>
+        <span class="cursor-pointer" style="color: #fff" (click)="globalDataService.logOutUser()" *ngIf="last == true">Log Out</span>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="!isUserLoggedIn()"><!-- menu for logged out users -->
+      <ng-container *ngFor="let menuItem of publicMenu">
+        <a [routerLink]="menuItem.link" href="{{menuItem.link}}" class="menu-items" *ngIf="menuItem.link != null">
+          <span>{{menuItem.name}}</span>
+        </a>
+        <div class="item-spacer"></div>
+      </ng-container>
+    </ng-container>
+  </div><!-- .d-flex -->
+
+  <div>
+    <span *ngIf="globalDataService.userDetails.name != null && globalDataService.userDetails.name != ''">
+      {{globalDataService.userDetails.name}}
+    </span>
+  </div>
+
+</div><!-- .toolbar -->
+
+<div class="content" role="main" style="margin-top: 160px;">
+  <router-outlet></router-outlet>
+</div>
